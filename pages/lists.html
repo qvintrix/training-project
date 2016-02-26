@@ -1,0 +1,60 @@
+	<div class="row">
+		<ul class="nav nav-tabs marginForHtml">
+			<li class="active">
+				<a data-target="#tab1" data-toggle="tab" class="groupListText freeField" ng-click="tempFunc()">
+					Избранное
+				</a>
+			</li>
+			<li>
+				<a data-target="#tab2" data-toggle="tab" class="groupListText freeField">
+					Запланировано
+				</a>
+			</li>
+			<li>
+				<a data-target="#tab3" data-toggle="tab" class="groupListText freeField">
+					Покупки
+				</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<div class="tab-pane active" id="tab1">
+				<h1 class="center">Избранные рецепты</h1> <hr/>
+				<p ng-if="!loveRecipes.length" class="helpForHidden">В этом списке пока ничего нет</p>
+				<div ng-repeat="rec in loveRecipes" class="col-md-6" ng-class="{'myClear': $even}">
+
+					<h2 ng-bind-html="rec.title" ng-model="favor"></h2>
+					<p ng-bind-html="rec.description | limitTo : 300 | points" class="groupListText"></p>
+					<a href="#/lists/farourite/{{$index}}" class="btn btn-default">Посмотреть Рецепт »</a>
+				</div>
+			</div>
+			<div class="tab-pane" id="tab2">
+				<h1 class="center">Запланированные рецепты</h1> <hr/>
+				<p ng-if="!plannedRec.length" class="helpForHidden">В этом списке пока ничего нет</p>
+				<div ng-repeat="plan in plannedRec" class="col-md-6" ng-class="{'myClear': $even}">
+
+					<h2 ng-bind-html="plan.title" ng-model="planList"></h2>
+					<p ng-bind-html="plan.description | limitTo : 300 | points" class="groupListText"></p>
+					<a href="#/lists/scheduled/{{$index}}" class="btn btn-default">Посмотреть Рецепт »</a>
+				</div>
+			</div>
+			<div class="tab-pane" id="tab3">
+				<h1 class="center">Список покупок по рецептам</h1> <hr/>
+				<p ng-if="!pickedRec.length" class="helpForHidden">В этом списке пока ничего нет</p>
+				<ul ng-repeat="part in pickedRec">
+					<h4 ng-bind-html="part.title" ng-model="buyList" class="text-info"></h4>
+					<li ng-repeat="picked in part.ingredients track by $index" ng-bind-html="picked | etc"></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+
+	<script>
+		$(document).ready(function () {
+			$(".freeField" ).mouseover(function() {
+				$(this).css("cursor", "pointer");
+			})
+		})
+	</script>

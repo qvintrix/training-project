@@ -1,0 +1,23 @@
+<div>
+	<h2 ng-bind-html="oneRecipe.title" class="marginForHtml center titleClass"></h2>
+<div id="backImg">
+	<img ng-src="{{oneRecipe.photoUrl}}" class="img-responsive centerImg" alt="">
+</div>	
+	<br>
+	<span>Поместить рецепт в:</span>
+	<div class="btn-group" role="group" aria-label="buttonsUnderImg" ng-cloak>
+		<button type="button" class="btn btn-default" ng-click="favorites($event)" ng-class = "{'active': isFavourite}">Избранное</button>
+		<button type="button" class="btn btn-default" ng-click="listForShop($event)" ng-class = "{'active': isPurchases}">Покупки</button>
+		<button type="button" class="btn btn-default" ng-click="planned($event)" ng-class = "{'active': isPlanned}">План</button>
+		
+	</div>
+	<a href="#/myRecipes/edit" class="btn btn-default" ng-click="changeOnEdit()" ng-if="!flag" id="editBut">Изменить</a>
+	<a href="#/myRecipes" class="btn btn-default saveBut" ng-click="saveLocalGeneralRecipes()" ng-if="flag">Сохранить</a>
+	<p ng-bind-html="oneRecipe.description"></p>
+	<hr>
+	<ul>
+		<li ng-repeat="ingredient in oneRecipe.ingredients track by $index" ng-bind-html="ingredient | etc"></li>
+	</ul>
+	<hr>
+	<p ng-bind-html="oneRecipe.instruction"></p>
+</div>

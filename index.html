@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)http://jscourses.gladkiy.me/task/angular2/route/router-example-angular.html#/ -->
+<html lang="en"  ng-app="recipesApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/variables.less" />
+    <link rel="stylesheet" href="css/bootswatch.less" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Homemade recipes</title>
+
+</head>
+<body>
+    <div class="row">
+     <div class="col-lg-12 col-md-12 col-sm-12">
+       <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid navBar">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand titles">Рецепты</span>
+        </div>
+
+        <div class="collapse navbar-collapse navBar" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/ideas" class="navBarRight ideas">Идеи</a></li>
+            <li><a href="#/myRecipes" class="navBarRight recipes">Мои рецепты</a></li>
+            <li><a href="#/lists" class="navBarRight list">Списки</a></li>
+        </ul>
+    </div>
+</div>
+</nav>
+
+</div>   
+</div>
+<div class="container-fluid">
+   <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+
+        <ng-view class="ng-scope"></ng-view>
+
+    </div>
+</div>     
+</div>
+
+
+
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/angular.js"></script>
+<script src="js/lib/angular-route.js"></script>
+<script src="js/lib/angular-sanitize.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/lib/ngStorage.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/ideasController.js"></script>
+<script src="js/controllers/recipesController.js"></script>
+<script src="js/service.js"></script>
+<script src="js/filter.js"></script>
+
+<script>
+$(document).ready(function() {
+   function highlightMenu() {
+       $( ".navActive" ).removeClass("navActive");
+
+       var link = location.href.toLowerCase();
+       var searchIdeas = link.indexOf("ideas");
+       var searchRecipes = link.indexOf("recipes");
+
+       if (searchIdeas !== -1 ) {
+           return $( ".ideas" ).addClass("navActive");
+       }
+
+       if (searchRecipes !== -1 ) {
+           return $( ".recipes" ).addClass("navActive");
+       } else{
+        return $( ".list" ).addClass("navActive");
+    }                
+}
+highlightMenu();
+
+})
+
+    $( ".navbar-right" ).on( "click", "a", function() {
+        $( ".navActive" ).removeClass("navActive");
+        $(this).addClass("navActive")
+    });
+
+</script>
+
+</body></html>

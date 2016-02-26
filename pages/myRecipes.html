@@ -1,0 +1,12 @@
+<div class="marginForHtml">
+
+	<a href="#/myRecipes/addRecipe" ng-click="addNewRecipe()" class="btn btn-default btn-xs pull-right helpHr">Добавить рецепт</a>
+</div>
+<hr class="myClear">
+<p ng-if="!listRecipes.length" class="helpForHidden">В этом списке пока ничего нет</p>
+<div ng-repeat="item in listRecipes" class="col-md-6" ng-class="{'myClear': $even}">
+
+	<h2 ng-bind-html="item.title"></h2>
+	<p ng-bind-html="item.description | limitTo : 300 | points" class="groupListText"></p>
+	<a href="#/myRecipes/{{$index}}" class="btn btn-default">Посмотреть Рецепт »</a>
+</div>
