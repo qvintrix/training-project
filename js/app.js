@@ -43,8 +43,6 @@ recipesApp.config(function ($routeProvider) {
         controller: 'recipesController',
     })
 
-
-
     $routeProvider.otherwise({
         redirectTo:'/ideas'
     })

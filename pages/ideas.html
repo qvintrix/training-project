@@ -8,7 +8,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
 
-    <div class="item" ng-repeat="recipe in dataRecipes.recipes" ng-class = "{'active': $index === 0}">
+    <div class="item carousel-center" ng-repeat="recipe in dataRecipes.recipes" ng-class = "{'active': $index === 0}">
       <img ng-src="{{recipe.photoUrl}}" alt="">
       <div class="carousel-caption">
 
